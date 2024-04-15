@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="theme-color" content="#ffffff" />
+		<link rel="manifest" href="/manifest.json" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+		<title>WITT | 위트있게 버리기</title>
+	</head>
+	<body>
+		<div id="root"></div>
+		<script type="module" src="/src/main.tsx"></script>
+		<script>
+			if ('serviceWorker' in navigator) {
+				window.addEventListener('load', function () {
+            navigator.serviceWorker.register('/sw.js').then(function (registration) {
+                console.log('Service Worker 등록 성공:', registration);
+            }).catch(function (error) {
+                console.log('Service Worker 등록 실패:', error);
+            });
+        });
+			} else {
+				console.log('Service workers are not supported.')
+			}
+		</script>
+	</body>
+</html>

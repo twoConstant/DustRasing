@@ -1,0 +1,47 @@
+{
+	"name": "위트",
+	"short_name": "위트 WITT",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#ffffff",
+	"theme_color": "#ffffff",
+	"description": "위트 있게 버리기 | Where Is This Trash",
+	"icons": [
+		{
+			"src": "icons/50.png",
+			"sizes": "50x50",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "icons/100.png",
+			"sizes": "100x100",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "icons/120.png",
+			"sizes": "120x120",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "icons/152.png",
+			"sizes": "152x152",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "icons/216.png",
+			"sizes": "216x216",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "icons/512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "maskable"
+		}
+	]
+}

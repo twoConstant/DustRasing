@@ -1,0 +1,80 @@
+server:
+    port: 8081
+    servlet:
+        context-path: /api
+spring:
+    security:
+        oauth2:
+            client:
+                registration:
+                    kakao:
+                        client-id: ENC(fNfwhOBu0n5TIZZ25NUSJFnCz/yO7+HBg1pZT+YGHSNEkOdnE7CRaZhQU+KJ8qdk)
+                        client-secret: ENC(Dbf3O+LkXAoeSDEcui2R2TK1KZdyIYMRLEmuQEy0pRRDdLrfy5qonhqLlymIh2oN)
+                        scope: profile_nickname,profile_image
+                        client-authentication-method: client_secret_post
+                        # 서버 환경에서 변경되어야함
+                        # redirect-uri: https://j10d103.p.ssafy.io/api/login/oauth2/code/kakao
+                        redirect-uri: ${redirect-uri}
+                        authorization-grant-type: authorization_code
+                        client-name: kakao
+                provider:
+                    kakao:
+                        authorization-uri: https://kauth.kakao.com/oauth/authorize
+                        token-uri: https://kauth.kakao.com/oauth/token
+                        user-info-uri: https://kapi.kakao.com/v2/user/me
+                        user-name-attribute: id
+    profiles:
+        active: local
+        include: key
+    jpa:
+        hibernate:
+            ddl-auto: validate
+        show-sql: true
+    sql:
+        init:
+            mode: always
+    # JPA 페이징 Defalut값 설정
+    data:
+        web:
+            pageable:
+                default-page-size: 20
+                one-indexed-parameters: true
+
+
+springdoc:
+    api-docs:
+        enabled: true
+        path: /api-docs
+    swagger-ui:
+        enabled: true
+        path: /swagger-ui.html
+
+
+jwt:
+    issuer: ENC(14Ooqgf/y/yIGDkfqCyTKJy3LG9Fpb/d0SydS0en9673xiV1HfACnA==)
+    secret_accesskey: ENC(7/o7yXVnICk0ep5F8NsM0MokqQtwmRYjDerggYrJ4OPZ4jnU8o7AjItfscf/bL/P)
+    secret_refreshkey: ENC(812uMgdp/iHEpvkJOffLxwUwBojNBXlHCkycsP+78sk=)
+
+---
+spring:
+    config:
+        activate:
+            on-profile: local
+    datasource:
+        url: ${my-db.url}
+        username: ${my-db.username}
+        password: ${my-db.password}
+        driver-class-name: ${my-db.driver-class-name}
+redirect-uri: http://localhost:8081/api/login/oauth2/code/kakao
+---
+spring:
+    config:
+        activate:
+            on-profile: server
+    datasource:
+        url: ENC(6zXYvK+4jGgwy+iw3uzbvv8DiKK6Q1OkH0NNXqJAP6Mk6JMhvy0a4sLofAY2+QV2Ds7fTyTWmKAb7a6GQo74ii+TwFO25BECG7WgqXj3B28AJES4Jwg16g==)
+        username: ENC(xqQCVTAfmYRmwZ9w2gdoSA==)
+        password: ENC(18LUnOaoJHQYsMpduiIKDn34Xxr57/7n)
+        driver-class-name: com.mysql.cj.jdbc.Driver
+redirect-uri: https://j10d103.p.ssafy.io/api/login/oauth2/code/kakao
+#redirect-uri: http://j10d103.p.ssafy.io:8081/api/login/oauth2/code/kakao
